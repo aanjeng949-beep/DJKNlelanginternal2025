@@ -92,7 +92,7 @@ const products = {
     {name:'Pajero Sport 2025 2.4 DAKAR SUV', desc:'Automatic', price:'Rp 250.000.000', img:'images/pajero_sport.png', wa:'0817581254'},
     {name:'Xpander Cross 2025 1.5 Cross Wagon', desc:'Automatic', price:'Rp 170.000.000', img:'images/xpander_cross.png', wa:'0817581254'},
     {name:'Mazda CX-5 2025 2.5 AWD SUV', desc:'Automatic', price:'Rp 370.000.000', img:'images/mazda_cx5.png', wa:'0817581254'},
-    {name:'Mazda CX-30 Grand Touring 2025 Wagon RST', desc:'Automatic', price:'Rp -', img:'images/mazda_cx30.png', wa:'0817581254'}
+    {name:'Mazda CX-30 Grand Touring 2025 Wagon RST', desc:'Automatic', price:'-', img:'images/mazda_cx30.png', wa:'0817581254'}
   ],
   tas: [
     {name:'Hermès Lindy 26 Beige Marfa', desc:'Hermès', price:'Rp 106.000.000', img:'https://via.placeholder.com/600x400?text=Hermes+Lindy+26', wa:'0817581254'},
@@ -114,7 +114,6 @@ const products = {
   ]
 };
 
-// render katalog
 const katalogList = document.getElementById('katalogList');
 catalog.forEach(cat=>{
   const el=document.createElement('div');
@@ -152,7 +151,6 @@ function showProducts(id){
     });
   }
   produkArea.appendChild(grid);
-  // scroll to produk
   window.scrollTo({top: document.getElementById('judul').offsetTop - 20, behavior:'smooth'});
 }
 </script>
