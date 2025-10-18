@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lelang Internal KPKNL</title>
+<style>
+:root {
+  --green: #1E8449;
+  --green-dark: #145A32;
+  --muted: #d0d7de;
+  --bg: #f5f7f5;
+  --card: #ffffff;
+  --text: #1b1b1b;
+}
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  padding: 0;
+}
+header {
+  background: var(--card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+header img {
+  height: 60px;
+  margin-right: 15px;
+}
+header h1 {
+  color: var(--green-dark);
+  font-size: 20px;
+  margin: 0;
+  text-align: center;
+}
+main {
+  padding: 30px 15px;
+}
+.katalog-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.katalog-item {
+  background: var(--card);
+  border-radius: 12px;
+  border: 1px solid var(--muted);
+  text-align: center;
+  padding: 25px 10px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+.katalog-item:hover {
+  transform: translateY(-5px);
+  border-color: var(--green);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+.katalog-item i {
+  font-size: 36px;
+  color: var(--green);
+  display: block;
+  margin-bottom: 8px;
+}
+.katalog-item span {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--green-dark);
+}
+.judul-kategori {
+  text-align: center;
+  font-size: 22px;
+  color: var(--green-dark);
+  font-weight: 700;
+  margin: 35px 0 20px;
+  display: none;
+}
+.produk-container {
+  display: none;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto 80px;
+}
+.produk-item {
+  background: var(--card);
+  border: 1px solid var(--muted);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: 0.3s;
+  overflow: hidden;
+}
+.produk-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+}
+.produk-item img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+.produk-item .nama {
+  font-weight: 700;
+  color: var(--green-dark);
+  margin: 10px 0 4px;
+  text-align: center;
+}
+.produk-item .desc {
+  font-size: 14px;
+  color: #555;
+  text-align: center;
+  margin-bottom: 4px;
+}
+.produk-item .harga {
+  color: var(--green);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.btn-green {
+  display: block;
+  background: var(--green);
+  color: white;
+  text-align: center;
+  padding: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 0 0 12px 12px;
+  transition: 0.3s;
+}
+.btn-green:hover {
+  background: var(--green-dark);
+}
+footer {
+  background: var(--green-dark);
+  color: white;
+  text-align: center;
+  padding: 20px 10px;
+  font-size: 14px;
+}
+</style>
+</head>
+<body>
+<header>
+  <img src="https://djkn.kemenkeu.go.id/images/logo-djkn.png" alt="Logo DJKN">
+  <h1>Direktorat Jenderal Kekayaan Negara<br>Kantor Pelayanan Kekayaan Negara dan Lelang (KPKNL)</h1>
+</header>
+<main>
+  <div class="katalog-container" id="katalogList"></div>
+  <div id="judul" class="judul-kategori"></div>
+  <div id="produkArea"></div>
+</main>
+<footer>
+  © 2025 KPKNL — Direktorat Jenderal Kekayaan Negara, Kementerian Keuangan Republik Indonesia
+</footer>
+<script>
+// Isi script akan sama seperti versi lengkap yang sebelumnya dibuat
+</script>
+</body>
+</html>
