@@ -1,13 +1,142 @@
-<!DOCTYPE html>
-<html lang="id">
+<!DOCTYPE html><html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lelang internal KPKNL</title>
-<!-- shortened: same content as fixed version already created -->
+<title>Lelang Internal KPKNL</title>
+<style>
+:root {
+  --green: #1E8449;
+  --green-dark: #145A32;
+  --muted: #d0d7de;
+  --bg: #f5f7f5;
+  --card: #ffffff;
+  --text: #1b1b1b;
+}
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  padding: 30px 15px;
+}
+h1 {
+  text-align: center;
+  color: var(--green-dark);
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+.katalog-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.katalog-item {
+  background: var(--card);
+  border-radius: 12px;
+  border: 1px solid var(--muted);
+  text-align: center;
+  padding: 25px 10px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+.katalog-item:hover {
+  transform: translateY(-5px);
+  border-color: var(--green);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+.katalog-item i {
+  font-size: 36px;
+  color: var(--green);
+  display: block;
+  margin-bottom: 8px;
+}
+.katalog-item span {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--green-dark);
+}.judul-kategori { text-align: center; font-size: 22px; color: var(--green-dark); font-weight: 700; margin: 35px 0 20px; display: none; }
+
+.produk-container { display: none; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto 80px; } .produk-item { background: var(--card); border: 1px solid var(--muted); border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: 0.3s; overflow: hidden; } .produk-item:hover { transform: translateY(-4px); box-shadow: 0 8px 16px rgba(0,0,0,0.08); } .produk-item img { width: 100%; height: 160px; object-fit: cover; } .produk-item .nama { font-weight: 700; color: var(--green-dark); margin: 10px 0 4px; text-align: center; } .produk-item .desc { font-size: 14px; color: #555; text-align: center; margin-bottom: 4px; } .produk-item .harga { color: var(--green); font-weight: 700; text-align: center; margin-bottom: 10px; } .btn-green { display: block; background: var(--green); color: white; text-align: center; padding: 10px; text-decoration: none; font-weight: 600; border-radius: 0 0 12px 12px; transition: 0.3s; } .btn-green:hover { background: var(--green-dark); } </style>
+
 </head>
 <body>
-<h1>Lelang internal KPKNL</h1>
-<p>Versi siap upload ke GitHub Pages.</p>
-</body>
+<h1>🏛️ Lelang Internal KPKNL</h1>
+<div class="katalog-container" id="katalogList"></div>
+<div id="judul" class="judul-kategori"></div>
+<div id="produkArea"></div><script>
+const catalog = [
+  { id: 'logam', label: 'Logam Mulia Antam', icon: '💰' },
+  { id: 'mobil', label: 'Mobil', icon: '🚗' },
+  { id: 'tas', label: 'Tas Branded', icon: '👜' },
+  { id: 'jam', label: 'Jam Tangan', icon: '⌚' }
+];
+
+const products = {
+  logam: [
+    { name:'Logam Mulia Antam 1000 Gram', desc:'Emas batangan Antam 1000 gram', price:'Rp 1.700.000.000', img:'images/gold1000.png', wa:'0817581254' },
+    { name:'Logam Mulia Antam 500 Gram', desc:'Emas batangan Antam 500 gram', price:'Rp 850.000.000', img:'images/gold500.png', wa:'0817581254' },
+    { name:'Logam Mulia Antam 250 Gram', desc:'Emas batangan Antam 250 gram', price:'Rp 425.000.000', img:'images/gold250.png', wa:'0817581254' }
+  ],
+  mobil: [
+    { name:'Toyota Land Cruiser 2025 3.3 GR-S', desc:'Automatic', price:'Rp1.500.000.000', img:'images/landcruiser.png', wa:'0817581254' },
+    { name:'Toyota Voxy 2025 2.0 Van Wagon', desc:'Automatic', price:'Rp320.000.000', img:'images/voxy.png', wa:'0817581254' },
+    { name:'Kijang Innova Zenix 2025 2.0 Q HV CVT TSS', desc:'Automatic', price:'Rp370.000.000', img:'images/kijang_innova_zenix.png', wa:'0817581254' },
+    { name:'Honda Accord 2025 1.5 Sedan', desc:'Automatic', price:'Rp430.000.000', img:'images/honda_accord.png', wa:'0817581254' },
+    { name:'Honda BR-V 2025 1.5 Prestige SUV', desc:'Automatic', price:'Rp192.000.000', img:'images/honda_brv.png', wa:'0817581254' },
+    { name:'Honda Civic 2025 1.5 RS Sedan', desc:'Automatic', price:'Rp360.000.000', img:'images/honda_civic.png', wa:'0817581254' }
+  ],
+  tas: [
+    { name:'Hermès Lindy 26 Beige Marfa', desc:'Hermès', price:'Rp106.000.000', img:'https://via.placeholder.com/600x400?text=Hermes+Lindy+26', wa:'0817581254' },
+    { name:'Hermès Birkin 25 Mauve Sylvestre', desc:'Hermès', price:'Rp220.000.000', img:'https://via.placeholder.com/600x400?text=Hermes+Birkin+25', wa:'0817581254' },
+    { name:'LOUIS VUITTON Vanity Chain Pouch', desc:'Louis Vuitton', price:'Rp35.000.000', img:'https://via.placeholder.com/600x400?text=LV+Vanity+Chain+Pouch', wa:'0817581254' }
+  ],
+  jam: []
+};
+
+// build katalog buttons
+const katalogList = document.getElementById('katalogList');
+catalog.forEach(cat => {
+  const el = document.createElement('div');
+  el.className = 'katalog-item';
+  el.innerHTML = `<i>${cat.icon}</i><span>${cat.label}</span>`;
+  el.addEventListener('click', () => showProducts(cat.id));
+  katalogList.appendChild(el);
+});
+
+const produkArea = document.getElementById('produkArea');
+
+function showProducts(id) {
+  produkArea.innerHTML = '';
+  const items = products[id] || [];
+
+  const title = document.getElementById('judul');
+  title.style.display = 'block';
+  title.innerText = 'Produk ' + catalog.find(c => c.id === id).label;
+
+  const container = document.createElement('div');
+  container.className = 'produk-container';
+  container.style.display = 'grid';
+
+  if (items.length === 0) {
+    container.innerHTML = `<p style="text-align:center;width:100%;color:#777;">Belum ada produk di kategori ini.</p>`;
+  } else {
+    items.forEach(p => {
+      const card = document.createElement('div');
+      card.className = 'produk-item';
+      card.innerHTML = `
+        <img src="${p.img}" alt="${p.name}">
+        <div class="nama">${p.name}</div>
+        <div class="desc">${p.desc}</div>
+        <div class="harga">${p.price}</div>
+        <a href="https://wa.me/${p.wa}?text=Halo,%20saya%20tertarik%20dengan%20${encodeURIComponent(p.name)}" class="btn-green" target="_blank">💬 Beli Sekarang</a>
+      `;
+      container.appendChild(card);
+    });
+  }
+  produkArea.appendChild(container);
+}
+</script></body>
 </html>
